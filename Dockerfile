@@ -11,7 +11,9 @@ ENV PF_HOSTNAME="" \
     PF_ALLOWED_NETWORK=""
 
 # install Postfix
-RUN apk -U add postfix ca-certificates libsasl
+RUN apk -U add postfix ca-certificates libsasl \
+    && && rm -rf /var/cache/apk/*
+    
 EXPOSE 25
 
 ADD postfix-entrypoint.sh /usr/bin/postfix-entrypoint.sh
